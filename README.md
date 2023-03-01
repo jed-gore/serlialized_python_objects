@@ -1,4 +1,4 @@
-# Serlialized Python Objects
+# Serialized Python Objects
 
 The goal of this project is to develop skills around serializing Python classes to and from both SQL and JSON.
 
