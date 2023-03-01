@@ -14,21 +14,27 @@ ma = Marshmallow(app)
 
 
 class Company(db.Model):
+    __tablename__ = "companies"
     id = db.Column(db.Integer, primary_key=True)
     ticker = db.Column(db.String(12))
 
+    def __repr__(self):
+        return "<Company(name={self.ticker!r})>".format(self=self)
+
 
 class KPI(db.Model):
+    __tablename__ = "kpis"
     id = db.Column(db.Integer, primary_key=True)
     kpi_name = db.Column(db.String(250))
-    company_id = db.Column(db.Integer, db.ForeignKey("company.id"))
-    company = db.relationship("Company", backref="KPIs")
+    company_id = db.Column(db.Integer, db.ForeignKey("companies.id"))
+    company = db.relationship("Company", backref="kpis")
 
 
 class CompanySchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = Company
         load_instance = True
+        include_relationships = True
 
 
 class KPISchema(ma.SQLAlchemyAutoSchema):
@@ -39,8 +45,8 @@ class KPISchema(ma.SQLAlchemyAutoSchema):
 
 @app.route("/")
 def index():
-    one_company = Company.query.first()
-    company_schema = CompanySchema()
+    one_company = Company.query.all()
+    company_schema = CompanySchema(many=True)
     res = company_schema.dump(one_company)
     return jsonify({"company": res})
 
