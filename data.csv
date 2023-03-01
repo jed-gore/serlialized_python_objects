@@ -1,0 +1,12 @@
+ticker,sector,kpi_name,kpi_meta_mapping
+TGT,consumer,net_revenue,revenue_dashboard
+TGT,consumer,internet_sales,internet_dashboard
+TGT,consumer,DSO,dso_dashboard
+WMT,consumer,net_revenue,revenue_dashboard
+WMT,consumer,DSO,dso_dashboard
+AMZN,consumer,net_revenue,revenue_dashboard
+AMZN,consumer,DSO,dso_dashboard
+AMZN,consumer,internet_sales,internet_dashboard
+AMZN,Internet_retail,net_revenue,revenue_dashboard
+AMZN,Internet_retail,DSO,dso_dashboard
+AMZN,Internet_retail,internet_sales,internet_dashboard
