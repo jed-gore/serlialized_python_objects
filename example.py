@@ -40,6 +40,7 @@ class CompanySchema(ma.SQLAlchemyAutoSchema):
 class KPISchema(ma.SQLAlchemyAutoSchema):
     class Meta:
         model = KPI
+        include_fk = True
         load_instance = True
 
 
